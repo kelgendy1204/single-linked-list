@@ -1,1 +1,1 @@
-Single Linked List
+Single linked list implementation

@@ -1,7 +1,7 @@
 {
-    "name": "single-linked-list",
+    "name": "test-test-test",
     "version": "1.0.0",
-    "description": "Single linked list implementation",
+    "description": "Test",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": ["dist"],
@@ -13,7 +13,7 @@
         "type": "git",
         "url": "https://github.com/kelgendy1204/single-linked-list.git"
     },
-    "keywords": ["single linked list"],
+    "keywords": ["test"],
     "author": "Khaled Saad",
     "license": "MIT"
 }
