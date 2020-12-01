@@ -8,6 +8,7 @@
         "dist"
     ],
     "scripts": {
+        "release": "np",
         "build": "tsc",
         "prepare": "npm run build"
     },
@@ -18,6 +19,16 @@
     "keywords": [
         "test"
     ],
+    "np": {
+        "yarn": false
+    },
     "author": "Khaled Saad",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "np": "^7.0.0"
+    },
+    "devDependencies": {
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.2"
+    }
 }
