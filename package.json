@@ -4,23 +4,27 @@
     "description": "test-22s9123",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
-        "lint": "eslint src",
-        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
         "release": "np",
         "build": "tsc",
-        "prepare": "npm run build"
+        "test": "jest",
+        "lint": "eslint src",
+        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+        "check-format": "prettier --check \"src/**/*.ts\" \"src/**/*.js\"",
+
+        "prepublishOnly": "npm test && npm run format && npm run lint",
+        "prepare": "npm run build",
+
+        "preversion" : " npm run check-format",
+        "version" : "npm run lint",
+        "postversion" : "git push && git push --tags"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/kelgendy1204/single-linked-list.git"
     },
-    "keywords": [
-        "test"
-    ],
+    "keywords": ["test"],
     "np": {
         "yarn": false
     },
@@ -30,10 +34,13 @@
         "np": "^7.0.0"
     },
     "devDependencies": {
+        "@types/jest": "^26.0.16",
         "@typescript-eslint/eslint-plugin": "^4.9.0",
         "@typescript-eslint/parser": "^4.9.0",
         "eslint": "^7.14.0",
+        "jest": "^26.6.3",
         "prettier": "^2.2.1",
+        "ts-jest": "^26.4.4",
         "typescript": "^4.1.2"
     }
 }
