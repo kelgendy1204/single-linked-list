@@ -4,7 +4,9 @@
     "description": "test-22s9123",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "release": "np",
         "build": "tsc",
@@ -12,28 +14,24 @@
         "lint": "eslint src",
         "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
         "check-format": "prettier --check \"src/**/*.ts\" \"src/**/*.js\"",
-
-        "prepublishOnly": "npm test && npm run format && npm run lint",
-        "prepare": "npm run build",
-
-        "preversion" : " npm run check-format",
-        "version" : "npm run lint",
-        "postversion" : "git push && git push --tags"
+        "prepublishOnly": "npm test && npm run check-format && npm run lint",
+        "prepare": "npm run build"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/kelgendy1204/single-linked-list.git"
     },
-    "keywords": ["test"],
+    "keywords": [
+        "test"
+    ],
     "np": {
         "yarn": false
     },
     "author": "Khaled Saad",
     "license": "MIT",
-    "dependencies": {
-        "np": "^7.0.0"
-    },
+    "dependencies": {},
     "devDependencies": {
+        "np": "^7.0.0",
         "@types/jest": "^26.0.16",
         "@typescript-eslint/eslint-plugin": "^4.9.0",
         "@typescript-eslint/parser": "^4.9.0",
