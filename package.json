@@ -4,9 +4,7 @@
     "description": "test-22s9123",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
         "cm": "cz",
         "release": "np",
@@ -22,13 +20,15 @@
         "type": "git",
         "url": "https://github.com/kelgendy1204/single-linked-list.git"
     },
-    "keywords": [
-        "test"
-    ],
+    "bugs": {
+        "url": "https://github.com/kelgendy1204/single-linked-list/issues"
+    },
+    "homepage": "https://github.com/kelgendy1204/single-linked-list#readme",
+    "keywords": ["test"],
     "np": {
         "yarn": false
     },
-    "author": "Khaled Saad",
+    "author": "Khaled Saad <elgendy1204@gmail.com>",
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {

@@ -1,3 +1,3 @@
 {
-    "*.ts": ["tsc -p tsconfig.json --noEmit", "eslint", "prettier --write"]
+    "*.ts": ["tsc -p tsconfig.json --noEmit", "npm run lint", "npm run format"]
 }
