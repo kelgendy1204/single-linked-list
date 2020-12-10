@@ -101,21 +101,21 @@ describe('Pop method', () => {
     });
 });
 
-describe('GetAt method', () => {
+describe('Get method', () => {
     test('returns the node at given index, undefined for not found indices', () => {
         const singleLinkedList = new SingleLinkedList();
-        expect(singleLinkedList.getAt(10)).toBeUndefined();
-        expect(singleLinkedList.getAt(-1)).toBeUndefined();
+        expect(singleLinkedList.get(10)).toBeUndefined();
+        expect(singleLinkedList.get(-1)).toBeUndefined();
 
         singleLinkedList.push(1);
         singleLinkedList.push(2);
         singleLinkedList.push(3);
         singleLinkedList.push(4);
 
-        expect(singleLinkedList.getAt(0)?.value).toBe(1);
-        expect(singleLinkedList.getAt(1)?.value).toBe(2);
-        expect(singleLinkedList.getAt(2)?.value).toBe(3);
-        expect(singleLinkedList.getAt(3)?.value).toBe(4);
+        expect(singleLinkedList.get(0)?.value).toBe(1);
+        expect(singleLinkedList.get(1)?.value).toBe(2);
+        expect(singleLinkedList.get(2)?.value).toBe(3);
+        expect(singleLinkedList.get(3)?.value).toBe(4);
     });
 });
 

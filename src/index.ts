@@ -37,7 +37,7 @@ export class SingleLinkedList {
     pop(): SingleLinkedListNode | undefined {
         if (this.length) {
             const lastNode = this.tail;
-            const previousNode = this.getAt(this.length - 2);
+            const previousNode = this.get(this.length - 2);
             this.tail = previousNode;
 
             if (this.length === 1) {
@@ -51,7 +51,7 @@ export class SingleLinkedList {
         }
     }
 
-    getAt(index: number): SingleLinkedListNode | undefined {
+    get(index: number): SingleLinkedListNode | undefined {
         let counter = 0;
         let node = this.head;
 
