@@ -119,6 +119,42 @@ describe('Get method', () => {
     });
 });
 
+describe('Shift method', () => {
+    test('removes the first node when the list is empty', () => {
+        const singleLinkedList = new SingleLinkedList();
+        const removedNode = singleLinkedList.shift();
+        expect(removedNode).toBeUndefined();
+        expect(singleLinkedList.length).toBe(0);
+    });
+
+    test('removes the first node when the list has a size of one', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push(1);
+        singleLinkedList.shift();
+        expect(singleLinkedList.length).toEqual(0);
+        expect(singleLinkedList.get(0)).toBeUndefined();
+    });
+
+    test('removes the first node when the list has a size of three', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+
+        const firstRemovedNode = singleLinkedList.shift();
+        expect(firstRemovedNode?.value).toEqual(1);
+        expect(singleLinkedList.head?.value).toEqual(2);
+        expect(singleLinkedList.length).toEqual(2);
+
+        singleLinkedList.shift();
+        expect(singleLinkedList.length).toEqual(1);
+        expect(singleLinkedList.head?.value).toEqual(3);
+
+        singleLinkedList.shift();
+        expect(singleLinkedList.head).toBeUndefined();
+    });
+});
+
 // describe.skip('Insert First', () => {
 // test('appends a node to the start of the list', () => {
 // const l = new List();
@@ -160,29 +196,6 @@ describe('Get method', () => {
 // expect(l.size()).toEqual(4);
 // l.clear();
 // expect(l.size()).toEqual(0);
-// });
-// });
-
-// describe.skip('RemoveFirst', () => {
-// test('removes the first node when the list has a size of one', () => {
-// const l = new List();
-// l.insertFirst('a');
-// l.removeFirst();
-// expect(l.size()).toEqual(0);
-// expect(l.getFirst()).toEqual(null);
-// });
-
-// test('removes the first node when the list has a size of three', () => {
-// const l = new List();
-// l.insertFirst('c');
-// l.insertFirst('b');
-// l.insertFirst('a');
-// l.removeFirst();
-// expect(l.size()).toEqual(2);
-// expect(l.getFirst().data).toEqual('b');
-// l.removeFirst();
-// expect(l.size()).toEqual(1);
-// expect(l.getFirst().data).toEqual('c');
 // });
 // });
 

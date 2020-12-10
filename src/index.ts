@@ -51,6 +51,18 @@ export class SingleLinkedList {
         }
     }
 
+    shift(): SingleLinkedListNode | undefined {
+        if (!this.head) {
+            return undefined;
+        }
+
+        const currentHead = this.head;
+        this.head = this.head.next;
+
+        this.length--;
+        return currentHead;
+    }
+
     get(index: number): SingleLinkedListNode | undefined {
         let counter = 0;
         let node = this.head;
