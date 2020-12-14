@@ -102,7 +102,7 @@ describe('Pop method', () => {
 });
 
 describe('Get method', () => {
-    test('returns the node at given index, undefined for not found indices', () => {
+    test('Returns the node at given index, undefined for not found indices', () => {
         const singleLinkedList = new SingleLinkedList();
         expect(singleLinkedList.get(10)).toBeUndefined();
         expect(singleLinkedList.get(-1)).toBeUndefined();
@@ -120,14 +120,14 @@ describe('Get method', () => {
 });
 
 describe('Shift method', () => {
-    test('removes the first node when the list is empty', () => {
+    test('Removes the first node when the list is empty', () => {
         const singleLinkedList = new SingleLinkedList();
         const removedNode = singleLinkedList.shift();
         expect(removedNode).toBeUndefined();
         expect(singleLinkedList.length).toBe(0);
     });
 
-    test('removes the first node when the list has a size of one', () => {
+    test('Removes the first node when the list has a size of one', () => {
         const singleLinkedList = new SingleLinkedList();
         singleLinkedList.push(1);
         singleLinkedList.shift();
@@ -135,7 +135,7 @@ describe('Shift method', () => {
         expect(singleLinkedList.get(0)).toBeUndefined();
     });
 
-    test('removes the first node when the list has a size of three', () => {
+    test('Removes the first node when the list has a size of three', () => {
         const singleLinkedList = new SingleLinkedList();
         singleLinkedList.push(1);
         singleLinkedList.push(2);
@@ -155,35 +155,32 @@ describe('Shift method', () => {
     });
 });
 
-// describe.skip('Insert First', () => {
-// test('appends a node to the start of the list', () => {
-// const l = new List();
-// l.insertFirst(1);
-// expect(l.head.data).toEqual(1);
-// l.insertFirst(2);
-// expect(l.head.data).toEqual(2);
-// });
-// });
+describe('Unshift method', () => {
+    test('Appends a node to the start of the list', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.unshift(1);
+        expect(singleLinkedList.head?.value).toEqual(1);
+        expect(singleLinkedList.tail?.value).toEqual(1);
+        singleLinkedList.unshift(2);
+        expect(singleLinkedList.head?.value).toEqual(2);
+        expect(singleLinkedList.tail?.value).toEqual(1);
+    });
+});
 
-// describe.skip('GetFirst', () => {
-// test('returns the first element', () => {
-// const l = new List();
-// l.insertFirst(1);
-// expect(l.getFirst().data).toEqual(1);
-// l.insertFirst(2);
-// expect(l.getFirst().data).toEqual(2);
-// });
-// });
+describe('Set method', () => {
+    test('Set node value change correctly', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+        singleLinkedList.push(4);
 
-// describe.skip('GetLast', () => {
-// test('returns the last element', () => {
-// const l = new List();
-// l.insertFirst(2);
-// expect(l.getLast()).toEqual({ data: 2, next: null });
-// l.insertFirst(1);
-// expect(l.getLast()).toEqual({ data: 2, next: null });
-// });
-// });
+        singleLinkedList.set(10, 0);
+
+        expect(singleLinkedList.set(15, 4)).toBeFalsy();
+        expect(singleLinkedList.head?.value).toBe(10);
+    });
+});
 
 // describe.skip('Clear', () => {
 // test('empties out the list', () => {

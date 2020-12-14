@@ -63,6 +63,22 @@ export class SingleLinkedList {
         return currentHead;
     }
 
+    unshift(value: any): SingleLinkedList | undefined {
+        const newNode = new SingleLinkedListNode(value);
+
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+
+        this.length++;
+
+        return this;
+    }
+
     get(index: number): SingleLinkedListNode | undefined {
         let counter = 0;
         let node = this.head;
@@ -78,5 +94,16 @@ export class SingleLinkedList {
             counter++;
             node = node.next;
         }
+    }
+
+    set(value: any, index: number): boolean {
+        const currentNode = this.get(index);
+
+        if (currentNode) {
+            currentNode.value = value;
+            return true;
+        }
+
+        return false;
     }
 }
