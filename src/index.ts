@@ -106,4 +106,78 @@ export class SingleLinkedList {
 
         return false;
     }
+
+    insert(value: any, index: number): boolean {
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+
+        if (index === this.length) {
+            return !!this.push(value);
+        }
+
+        if (index === 0) {
+            return !!this.unshift(value);
+        }
+
+        const oldNode = this.get(index - 1);
+        const newNode = new SingleLinkedListNode(value);
+
+        newNode.next = (oldNode as SingleLinkedListNode).next;
+        (oldNode as SingleLinkedListNode).next = newNode;
+
+        this.length++;
+
+        return true;
+    }
+
+    // TODO: test this
+    toArray(): any[] {
+        const array: any[] = [];
+
+        let node = this.head;
+
+        while (node) {
+            array.push(node.value);
+            node = node.next;
+        }
+
+        return array;
+    }
+
+    remove(index: number): SingleLinkedListNode | undefined {
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+
+        const previousNode = this.get(index - 1);
+        const removedNode = (previousNode as SingleLinkedListNode).next;
+        (previousNode as SingleLinkedListNode).next = (removedNode as SingleLinkedListNode).next;
+        this.length--;
+
+        return removedNode;
+    }
+
+    clear(): void {
+        this.head = undefined;
+        this.tail = undefined;
+        this.length = 0;
+    }
+
+    reverse(): SingleLinkedList {
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let nextNode;
+        let prevNode = undefined;
+
+        for (let i = 0; i < this.length; i++) {
+            nextNode = (node as SingleLinkedListNode).next;
+            (node as SingleLinkedListNode).next = prevNode;
+            prevNode = node;
+            node = nextNode;
+        }
+
+        return this;
+    }
 }

@@ -182,19 +182,160 @@ describe('Set method', () => {
     });
 });
 
-// describe.skip('Clear', () => {
-// test('empties out the list', () => {
-// const l = new List();
-// expect(l.size()).toEqual(0);
-// l.insertFirst(1);
-// l.insertFirst(1);
-// l.insertFirst(1);
-// l.insertFirst(1);
-// expect(l.size()).toEqual(4);
-// l.clear();
-// expect(l.size()).toEqual(0);
-// });
-// });
+describe('Insert method', () => {
+    test('inserts a new node in the wrong index return false', () => {
+        const singleLinkedList = new SingleLinkedList();
+        expect(singleLinkedList.insert('hi', -1)).toBeFalsy();
+        expect(singleLinkedList.insert('hi', 1)).toBeFalsy();
+    });
+
+    test('inserts a new node with data at the 0 index when the list is empty', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.insert('hi', 0);
+        expect(singleLinkedList.head?.value).toEqual('hi');
+    });
+
+    test('inserts a new node with data at the 0 index when the list has elements', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push('a');
+        singleLinkedList.push('b');
+        singleLinkedList.push('c');
+        singleLinkedList.insert('hi', 0);
+
+        expect(singleLinkedList.get(0)?.value).toEqual('hi');
+        expect(singleLinkedList.get(1)?.value).toEqual('a');
+        expect(singleLinkedList.get(2)?.value).toEqual('b');
+        expect(singleLinkedList.get(3)?.value).toEqual('c');
+    });
+
+    test('inserts a new node with data at a middle index', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push('a');
+        singleLinkedList.push('b');
+        singleLinkedList.push('c');
+        singleLinkedList.push('d');
+        singleLinkedList.insert('hi', 2);
+
+        expect(singleLinkedList.get(0)?.value).toEqual('a');
+        expect(singleLinkedList.get(1)?.value).toEqual('b');
+        expect(singleLinkedList.get(2)?.value).toEqual('hi');
+        expect(singleLinkedList.get(3)?.value).toEqual('c');
+        expect(singleLinkedList.get(4)?.value).toEqual('d');
+    });
+
+    test('inserts a new node with data at a last index', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push('a');
+        singleLinkedList.push('b');
+        singleLinkedList.insert('hi', 2);
+
+        expect(singleLinkedList.get(0)?.value).toEqual('a');
+        expect(singleLinkedList.get(1)?.value).toEqual('b');
+        expect(singleLinkedList.get(2)?.value).toEqual('hi');
+    });
+});
+
+describe('toArray method', () => {
+    test('convert linkedlist to array', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push('a');
+        singleLinkedList.push('b');
+        singleLinkedList.push('c');
+        singleLinkedList.push('d');
+
+        expect(singleLinkedList.toArray()).toStrictEqual(['a', 'b', 'c', 'd']);
+    });
+});
+
+describe('Clear method', () => {
+    test('empties out the list', () => {
+        const singleLinkedList = new SingleLinkedList();
+        expect(singleLinkedList.length).toEqual(0);
+        singleLinkedList.unshift(1);
+        singleLinkedList.unshift(1);
+        singleLinkedList.unshift(1);
+        singleLinkedList.unshift(1);
+
+        expect(singleLinkedList.length).toEqual(4);
+        expect(singleLinkedList.head?.value).toEqual(1);
+        expect(singleLinkedList.tail?.value).toEqual(1);
+
+        singleLinkedList.clear();
+        expect(singleLinkedList.length).toEqual(0);
+        expect(singleLinkedList.head).toBeUndefined();
+        expect(singleLinkedList.tail).toBeUndefined();
+        expect(singleLinkedList.toArray()).toStrictEqual([]);
+    });
+});
+
+describe('Remove method', () => {
+    test('remove doesnt crash on an empty list', () => {
+        const singleLinkedList = new SingleLinkedList();
+        expect(() => {
+            singleLinkedList.remove(-1);
+            singleLinkedList.remove(0);
+            singleLinkedList.remove(1);
+            singleLinkedList.remove(2);
+        }).not.toThrow();
+    });
+
+    test('remove doesnt crash on an index out of bounds', () => {
+        const singleLinkedList = new SingleLinkedList();
+        expect(() => {
+            singleLinkedList.unshift('a');
+            singleLinkedList.remove(1);
+        }).not.toThrow();
+    });
+
+    test('remove deletes the first node', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+        singleLinkedList.push(4);
+        expect(singleLinkedList.get(0)?.value).toEqual(1);
+        singleLinkedList.remove(0);
+        expect(singleLinkedList.get(0)?.value).toEqual(2);
+    });
+
+    test('remove deletes the node at the given index', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+        singleLinkedList.push(4);
+        expect(singleLinkedList.get(1)?.value).toEqual(2);
+        singleLinkedList.remove(1);
+        expect(singleLinkedList.get(1)?.value).toEqual(3);
+    });
+
+    test('remove works on the last node', () => {
+        const singleLinkedList = new SingleLinkedList();
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+        singleLinkedList.push(4);
+        expect(singleLinkedList.get(3)?.value).toEqual(4);
+        singleLinkedList.remove(3);
+        expect(singleLinkedList.get(3)).toEqual(undefined);
+    });
+});
+
+describe('Reverse method', () => {
+    test('Reverse method works correctly', () => {
+        const singleLinkedList = new SingleLinkedList();
+        expect(singleLinkedList.length).toEqual(0);
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+        singleLinkedList.push(4);
+        singleLinkedList.push(5);
+
+        expect(singleLinkedList.toArray()).toStrictEqual([1, 2, 3, 4, 5]);
+        singleLinkedList.reverse();
+        expect(singleLinkedList.toArray()).toStrictEqual([5, 4, 3, 2, 1]);
+    });
+});
 
 // describe.skip('InsertLast', () => {
 // test('adds to the end of the list', () => {
@@ -205,114 +346,6 @@ describe('Set method', () => {
 
 // expect(l.size()).toEqual(2);
 // expect(l.getLast().data).toEqual('b');
-// });
-// });
-
-// describe.skip('RemoveAt', () => {
-// test('removeAt doesnt crash on an empty list', () => {
-// const l = new List();
-// expect(() => {
-// l.removeAt(0);
-// l.removeAt(1);
-// l.removeAt(2);
-// }).not.toThrow();
-// });
-
-// test('removeAt doesnt crash on an index out of bounds', () => {
-// const l = new List();
-// expect(() => {
-// const l = new List();
-// l.insertFirst('a');
-// l.removeAt(1);
-// }).not.toThrow();
-// });
-
-// test('removeAt deletes the first node', () => {
-// const l = new List();
-// l.insertLast(1);
-// l.insertLast(2);
-// l.insertLast(3);
-// l.insertLast(4);
-// expect(l.getAt(0).data).toEqual(1);
-// l.removeAt(0);
-// expect(l.getAt(0).data).toEqual(2);
-// });
-
-// test('removeAt deletes the node at the given index', () => {
-// const l = new List();
-// l.insertLast(1);
-// l.insertLast(2);
-// l.insertLast(3);
-// l.insertLast(4);
-// expect(l.getAt(1).data).toEqual(2);
-// l.removeAt(1);
-// expect(l.getAt(1).data).toEqual(3);
-// });
-
-// test('removeAt works on the last node', () => {
-// const l = new List();
-// l.insertLast(1);
-// l.insertLast(2);
-// l.insertLast(3);
-// l.insertLast(4);
-// expect(l.getAt(3).data).toEqual(4);
-// l.removeAt(3);
-// expect(l.getAt(3)).toEqual(null);
-// });
-// });
-
-// describe.skip('InsertAt', () => {
-// test('inserts a new node with data at the 0 index when the list is empty', () => {
-// const l = new List();
-// l.insertAt('hi', 0);
-// expect(l.getFirst().data).toEqual('hi');
-// });
-
-// test('inserts a new node with data at the 0 index when the list has elements', () => {
-// const l = new List();
-// l.insertLast('a');
-// l.insertLast('b');
-// l.insertLast('c');
-// l.insertAt('hi', 0);
-// expect(l.getAt(0).data).toEqual('hi');
-// expect(l.getAt(1).data).toEqual('a');
-// expect(l.getAt(2).data).toEqual('b');
-// expect(l.getAt(3).data).toEqual('c');
-// });
-
-// test('inserts a new node with data at a middle index', () => {
-// const l = new List();
-// l.insertLast('a');
-// l.insertLast('b');
-// l.insertLast('c');
-// l.insertLast('d');
-// l.insertAt('hi', 2);
-// expect(l.getAt(0).data).toEqual('a');
-// expect(l.getAt(1).data).toEqual('b');
-// expect(l.getAt(2).data).toEqual('hi');
-// expect(l.getAt(3).data).toEqual('c');
-// expect(l.getAt(4).data).toEqual('d');
-// });
-
-// test('inserts a new node with data at a last index', () => {
-// const l = new List();
-// l.insertLast('a');
-// l.insertLast('b');
-// l.insertAt('hi', 2);
-// expect(l.getAt(0).data).toEqual('a');
-// expect(l.getAt(1).data).toEqual('b');
-// expect(l.getAt(2).data).toEqual('hi');
-// });
-
-// test('insert a new node when index is out of bounds', () => {
-// const l = new List();
-// l.insertLast('a');
-// l.insertLast('b');
-// l.insertAt('hi', 30);
-
-// expect(l.getAt(0).data).toEqual('a');
-// expect(l.getAt(1).data).toEqual('b');
-// expect(l.getAt(2).data).toEqual('hi');
 // });
 // });
 
