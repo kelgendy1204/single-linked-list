@@ -4,7 +4,9 @@
     "description": "test-22s9123",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "cm": "cz",
         "release": "np",
@@ -25,13 +27,14 @@
         "url": "https://github.com/kelgendy1204/single-linked-list/issues"
     },
     "homepage": "https://github.com/kelgendy1204/single-linked-list#readme",
-    "keywords": ["test"],
+    "keywords": [
+        "test"
+    ],
     "np": {
         "yarn": false
     },
     "author": "Khaled Saad <elgendy1204@gmail.com>",
     "license": "MIT",
-    "dependencies": {},
     "devDependencies": {
         "@commitlint/cli": "^11.0.0",
         "@commitlint/config-conventional": "^11.0.0",
@@ -46,6 +49,7 @@
         "lint-staged": "^10.5.2",
         "np": "^7.0.0",
         "prettier": "^2.2.1",
+        "semantic-release": "^17.3.0",
         "ts-jest": "^26.4.4",
         "typescript": "^4.1.2"
     },
