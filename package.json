@@ -1,6 +1,6 @@
 {
     "name": "test-22s9123",
-    "version": "0.0.0-development",
+    "version": "0.0.1-development",
     "description": "test-22s9123",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -9,7 +9,6 @@
     ],
     "scripts": {
         "cm": "cz",
-        "release": "np",
         "build": "tsc",
         "test-watch": "jest --watch",
         "test": "jest",
@@ -30,9 +29,6 @@
     "keywords": [
         "test"
     ],
-    "np": {
-        "yarn": false
-    },
     "author": "Khaled Saad <elgendy1204@gmail.com>",
     "license": "MIT",
     "devDependencies": {
@@ -47,7 +43,6 @@
         "husky": "^4.3.0",
         "jest": "^26.6.3",
         "lint-staged": "^10.5.2",
-        "np": "^7.0.0",
         "prettier": "^2.2.1",
         "semantic-release": "^17.3.0",
         "ts-jest": "^26.4.4",
