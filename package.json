@@ -1,6 +1,6 @@
 {
     "name": "test-22s9123",
-    "version": "0.1.0-development",
+    "version": "1.2.0",
     "description": "test-22s9123",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
