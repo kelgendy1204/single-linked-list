@@ -21,6 +21,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run test cases
+        run: npm test
+
+      - name: Check format
+        run: npm run check-format
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build package
+        run: npm run build
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -12,11 +12,9 @@
         "build": "tsc",
         "test-watch": "jest --watch",
         "test": "jest",
-        "lint": "eslint src",
+        "lint": "tsc --noEmit && eslint src",
         "format": "prettier --write \"src/**/*.ts\"",
-        "check-format": "prettier --check \"src/**/*.ts\"",
-        "prepublishOnly": "npm test && npm run check-format && npm run lint",
-        "prepare": "npm run build"
+        "check-format": "prettier --check \"src/**/*.ts\""
     },
     "repository": {
         "type": "git",
@@ -63,8 +61,8 @@
         "*.ts": [
             "tsc --noEmit",
             "npm run test",
-            "npm run lint",
-            "npm run check-format"
+            "npm run check-format",
+            "npm run lint"
         ]
     }
 }
