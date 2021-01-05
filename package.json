@@ -60,7 +60,7 @@
     "lint-staged": {
         "*.ts": [
             "tsc --noEmit",
-            "npm run test",
+            "npm run test .",
             "npm run check-format",
             "npm run lint"
         ]
