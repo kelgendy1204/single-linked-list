@@ -1,16 +1,16 @@
-export class SingleLinkedListNode {
-    public value: any;
-    public next: SingleLinkedListNode | undefined;
+export class SingleLinkedListNode<T> {
+    public value: T;
+    public next: SingleLinkedListNode<T> | undefined;
 
-    constructor(value: any) {
+    constructor(value: T) {
         this.value = value;
         this.next = undefined;
     }
 }
 
-export class SingleLinkedList {
-    public head: SingleLinkedListNode | undefined;
-    public tail: SingleLinkedListNode | undefined;
+export class SingleLinkedList<T> {
+    public head: SingleLinkedListNode<T> | undefined;
+    public tail: SingleLinkedListNode<T> | undefined;
     public length: number;
 
     constructor() {
@@ -19,14 +19,14 @@ export class SingleLinkedList {
         this.length = 0;
     }
 
-    push(value: any): SingleLinkedList {
+    push(value: T): SingleLinkedList<T> {
         const newNode = new SingleLinkedListNode(value);
 
         if (this.length === 0) {
             this.head = newNode;
             this.tail = newNode;
         } else {
-            (this.tail as SingleLinkedListNode).next = newNode;
+            (this.tail as SingleLinkedListNode<T>).next = newNode;
             this.tail = newNode;
         }
 
@@ -34,7 +34,7 @@ export class SingleLinkedList {
         return this;
     }
 
-    pop(): SingleLinkedListNode | undefined {
+    pop(): SingleLinkedListNode<T> | undefined {
         if (this.length) {
             const lastNode = this.tail;
             const previousNode = this.get(this.length - 2);
@@ -51,7 +51,7 @@ export class SingleLinkedList {
         }
     }
 
-    shift(): SingleLinkedListNode | undefined {
+    shift(): SingleLinkedListNode<T> | undefined {
         if (!this.head) {
             return undefined;
         }
@@ -63,7 +63,7 @@ export class SingleLinkedList {
         return currentHead;
     }
 
-    unshift(value: any): SingleLinkedList | undefined {
+    unshift(value: T): SingleLinkedList<T> | undefined {
         const newNode = new SingleLinkedListNode(value);
 
         if (!this.head) {
@@ -79,7 +79,7 @@ export class SingleLinkedList {
         return this;
     }
 
-    get(index: number): SingleLinkedListNode | undefined {
+    get(index: number): SingleLinkedListNode<T> | undefined {
         let counter = 0;
         let node = this.head;
 
@@ -96,7 +96,7 @@ export class SingleLinkedList {
         }
     }
 
-    set(value: any, index: number): boolean {
+    set(value: T, index: number): boolean {
         const currentNode = this.get(index);
 
         if (currentNode) {
@@ -107,7 +107,7 @@ export class SingleLinkedList {
         return false;
     }
 
-    insert(value: any, index: number): boolean {
+    insert(value: T, index: number): boolean {
         if (index < 0 || index > this.length) {
             return false;
         }
@@ -123,8 +123,8 @@ export class SingleLinkedList {
         const oldNode = this.get(index - 1);
         const newNode = new SingleLinkedListNode(value);
 
-        newNode.next = (oldNode as SingleLinkedListNode).next;
-        (oldNode as SingleLinkedListNode).next = newNode;
+        newNode.next = (oldNode as SingleLinkedListNode<T>).next;
+        (oldNode as SingleLinkedListNode<T>).next = newNode;
 
         this.length++;
 
@@ -132,8 +132,8 @@ export class SingleLinkedList {
     }
 
     // TODO: test this
-    toArray(): any[] {
-        const array: any[] = [];
+    toArray(): T[] {
+        const array: T[] = [];
 
         let node = this.head;
 
@@ -145,14 +145,14 @@ export class SingleLinkedList {
         return array;
     }
 
-    remove(index: number): SingleLinkedListNode | undefined {
+    remove(index: number): SingleLinkedListNode<T> | undefined {
         if (index < 0 || index >= this.length) return undefined;
         if (index === 0) return this.shift();
         if (index === this.length - 1) return this.pop();
 
         const previousNode = this.get(index - 1);
-        const removedNode = (previousNode as SingleLinkedListNode).next;
-        (previousNode as SingleLinkedListNode).next = (removedNode as SingleLinkedListNode).next;
+        const removedNode = (previousNode as SingleLinkedListNode<T>).next;
+        (previousNode as SingleLinkedListNode<T>).next = (removedNode as SingleLinkedListNode<T>).next;
         this.length--;
 
         return removedNode;
@@ -164,7 +164,7 @@ export class SingleLinkedList {
         this.length = 0;
     }
 
-    reverse(): SingleLinkedList {
+    reverse(): SingleLinkedList<T> {
         let node = this.head;
         this.head = this.tail;
         this.tail = node;
@@ -172,8 +172,8 @@ export class SingleLinkedList {
         let prevNode = undefined;
 
         for (let i = 0; i < this.length; i++) {
-            nextNode = (node as SingleLinkedListNode).next;
-            (node as SingleLinkedListNode).next = prevNode;
+            nextNode = (node as SingleLinkedListNode<T>).next;
+            (node as SingleLinkedListNode<T>).next = prevNode;
             prevNode = node;
             node = nextNode;
         }
