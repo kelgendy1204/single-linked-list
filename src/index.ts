@@ -131,7 +131,6 @@ export class SingleLinkedList<T> {
         return true;
     }
 
-    // TODO: test this
     toArray(): T[] {
         const array: T[] = [];
 

@@ -1,7 +1,7 @@
 {
-    "name": "test-22s9123",
+    "name": "single-linked-list",
     "version": "0.0.1-development",
-    "description": "test-22s9123",
+    "description": "Single linked list implementation",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
