@@ -337,6 +337,29 @@ describe('Reverse method', () => {
     });
 });
 
+describe('Iterable', () => {
+    test('Is iterable', () => {
+        const singleLinkedList = new SingleLinkedList<number>();
+        expect(singleLinkedList.length).toEqual(0);
+        singleLinkedList.push(1);
+        singleLinkedList.push(2);
+        singleLinkedList.push(3);
+        singleLinkedList.push(4);
+        singleLinkedList.push(5);
+
+        expect([...singleLinkedList]).toEqual([1, 2, 3, 4, 5]);
+    });
+});
+
+describe('From Array', () => {
+    test('Create from array', () => {
+        const singleLinkedList = new SingleLinkedList<number>();
+        singleLinkedList.fromArray([1,2,3,4,5]);
+
+        expect([...singleLinkedList]).toEqual([1, 2, 3, 4, 5]);
+    });
+});
+
 // describe.skip('InsertLast', () => {
 // test('adds to the end of the list', () => {
 // const l = new List();

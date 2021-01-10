@@ -8,7 +8,7 @@ export class SingleLinkedListNode<T> {
     }
 }
 
-export class SingleLinkedList<T> {
+export class SingleLinkedList<T> implements Iterable<T> {
     public head: SingleLinkedListNode<T> | undefined;
     public tail: SingleLinkedListNode<T> | undefined;
     public length: number;
@@ -144,6 +144,14 @@ export class SingleLinkedList<T> {
         return array;
     }
 
+    fromArray(array: T[]): SingleLinkedList<T> {
+        for (let i = 0; i < array.length; i++) {
+            this.push(array[i]);
+        }
+
+        return this;
+    }
+
     remove(index: number): SingleLinkedListNode<T> | undefined {
         if (index < 0 || index >= this.length) return undefined;
         if (index === 0) return this.shift();
@@ -178,5 +186,13 @@ export class SingleLinkedList<T> {
         }
 
         return this;
+    }
+
+    *[Symbol.iterator](): IterableIterator<T> {
+        let iterableItem = this.head;
+        while (iterableItem) {
+            yield iterableItem.value;
+            iterableItem = iterableItem.next;
+        }
     }
 }
