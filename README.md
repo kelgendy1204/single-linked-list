@@ -16,21 +16,31 @@ npm install single-linked-list
 ```ts
 import { SingleLinkedList } from 'single-linked-list';
 
-const singleLinkedList = new SingleLinkedList<number>();
+const singleLinkedList1 = new SingleLinkedList<number>();
 singleLinkedList.push(1);
 singleLinkedList.push(2);
 singleLinkedList.push(3);
 singleLinkedList.push(4);
 singleLinkedList.push(5);
+console.log(singleLinkedList1.toArray()); // [1, 2, 3, 4, 5]
 
-console.log(singleLinkedList.toArray()); // [1, 2, 3, 4, 5]
+const singleLinkedList2 = new SingleLinkedList<number>();
+singleLinkedList1.fromArray([11, 12, 13, 14, 15]);
+console.log(singleLinkedList2.toArray()); // [11, 12, 13, 14, 15]
+
+// It's also iterable
+for (let key of singleLinkedList2) {
+    console.log(singleLinkedList2[key]);
+}
+// Or
+console.log([...singleLinkedList1]);
 ```
 
 ## SingleLinkedList<T> API
 
 ### Attributes
 
-| attributes | type                 | description                |
+| attributes | parameters           | description                |
 | ---------- | -------------------- | -------------------------- |
 | head       | SingleLinkedListNode | The first node in the list |
 | tail       | SingleLinkedListNode | The last node in the list  |
@@ -38,16 +48,17 @@ console.log(singleLinkedList.toArray()); // [1, 2, 3, 4, 5]
 
 ### Functions
 
-| attributes | args                    | return type             | description                                     |
-| ---------- | ----------------------- | ----------------------- | ----------------------------------------------- |
-| push       | value: T                | SingleLinkedList<T>     | push new node with value to the end of the list |
-| pop        | number                  | Length of the list      |                                                 |
-| get        | index: number           | SingleLinkedListNode<T> | return node at index                            |
-| set        | value: T, index: number | boolean                 | change node value at index                      |
-| insert     | value: T, index: number | boolean                 |                                                 |
-| remove     | number                  | Length of the list      |                                                 |
-| reverse    | number                  | Length of the list      |                                                 |
-| shift      | number                  | Length of the list      |                                                 |
-| toArray    | number                  | Length of the list      |                                                 |
-| unshift    | number                  | Length of the list      |                                                 |
-| clear      |                         | void                    | remove all nodes                                |
+| function  | parameters              | return type                          | description                                        |
+| --------- | ----------------------- | ------------------------------------ | -------------------------------------------------- |
+| push      | value: T                | SingleLinkedList<T>                  | push new node with value to the end of the list    |
+| unshift   | value: T                | SingleLinkedList<T>                  | push new node with value to the start of the list  |
+| pop       |                         | SingleLinkedListNode<T> \| undefined | remove the last node and return it                 |
+| shift     |                         | SingleLinkedListNode<T> \| undefined | remove the first node and return it                |
+| get       | index: number           | SingleLinkedListNode<T> \| undefined | return node at certain index                       |
+| remove    | index: number           | SingleLinkedListNode<T> \| undefined | remove node at certain index                       |
+| set       | value: T, index: number | boolean                              | change node value at certain index                 |
+| insert    | value: T, index: number | boolean                              | insert node at certain index                       |
+| toArray   |                         | T[]                                  | return the linked list in the form of normal array |
+| fromArray | array: T[]              | SingleLinkedList<T>                  | Create single linked list from normal array        |
+| reverse   |                         | SingleLinkedList<T>                  | Mutate the list by reversing it                    |
+| clear     |                         | void                                 | remove all nodes                                   |
