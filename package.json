@@ -1,5 +1,5 @@
 {
-    "name": "single-linked-list",
+    "name": "single-ll",
     "version": "0.0.1-development",
     "description": "Single linked list implementation",
     "main": "dist/index.js",
