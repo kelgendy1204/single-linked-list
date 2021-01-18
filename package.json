@@ -1,6 +1,6 @@
 {
     "name": "single-ll",
-    "version": "0.0.1-development",
+    "version": "1.0.0",
     "description": "Single linked list implementation",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     },
     "homepage": "https://github.com/kelgendy1204/single-linked-list#readme",
     "keywords": [
-        "test"
+        "single linked list"
     ],
     "author": "Khaled Saad <elgendy1204@gmail.com>",
     "license": "MIT",
