@@ -1,5 +1,6 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![codecov](https://codecov.io/gh/kelgendy1204/single-linked-list/branch/main/graph/badge.svg?token=K80T9TZS6Z)](https://codecov.io/gh/kelgendy1204/single-linked-list)
 
 # Single linked list implementation
 
