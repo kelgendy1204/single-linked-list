@@ -354,68 +354,8 @@ describe('Iterable', () => {
 describe('From Array', () => {
     test('Create from array', () => {
         const singleLinkedList = new SingleLinkedList<number>();
-        singleLinkedList.fromArray([1,2,3,4,5]);
+        singleLinkedList.fromArray([1, 2, 3, 4, 5]);
 
         expect([...singleLinkedList]).toEqual([1, 2, 3, 4, 5]);
     });
 });
-
-// describe.skip('InsertLast', () => {
-// test('adds to the end of the list', () => {
-// const l = new List();
-// l.insertFirst('a');
-
-// l.insertLast('b');
-
-// expect(l.size()).toEqual(2);
-// expect(l.getLast().data).toEqual('b');
-// });
-// });
-
-// describe.skip('ForEach', () => {
-// test('applies a transform to each node', () => {
-// const l = new List();
-
-// l.insertLast(1);
-// l.insertLast(2);
-// l.insertLast(3);
-// l.insertLast(4);
-
-// l.forEach((node) => {
-// node.data += 10;
-// });
-
-// expect(l.getAt(0).data).toEqual(11);
-// expect(l.getAt(1).data).toEqual(12);
-// expect(l.getAt(2).data).toEqual(13);
-// expect(l.getAt(3).data).toEqual(14);
-// });
-// });
-
-// describe.skip('for...of loops', () => {
-// test('works with the linked list', () => {
-// const l = new List();
-
-// l.insertLast(1);
-// l.insertLast(2);
-// l.insertLast(3);
-// l.insertLast(4);
-
-// for (let node of l) {
-// node.data += 10;
-// }
-
-// expect(l.getAt(0).data).toEqual(11);
-// expect(l.getAt(1).data).toEqual(12);
-// expect(l.getAt(2).data).toEqual(13);
-// expect(l.getAt(3).data).toEqual(14);
-// });
-
-// test('for...of works on an empty list', () => {
-// const l = new List();
-// expect(() => {
-// for (let node of l) {
-// }
-// }).not.toThrow();
-// });
-// });
